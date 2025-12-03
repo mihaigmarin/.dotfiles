@@ -1,4 +1,4 @@
-" Copyright (C) 2025 Mihai Gabriel Marin .vimrc
+" Copyright (C) 2025 Gabriel Marin .vimrc
 
 " Basic
 
@@ -8,7 +8,7 @@ set shiftwidth=4
 set expandtab
 set ai
 "set number
-set hlsearch
+"set hlsearch
 set ruler
 set noswapfile
 set autoindent
