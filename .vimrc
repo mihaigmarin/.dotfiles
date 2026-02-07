@@ -1,4 +1,4 @@
-" Copyright (C) 2025 Gabriel Marin .vimrc
+" Copyright (C) 2025 Mihai Gabriel Marin .vimrc
 
 " Basic
 
