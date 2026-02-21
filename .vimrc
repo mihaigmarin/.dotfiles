@@ -36,13 +36,3 @@ endif
 " Disable matching parenthesis
 let g:loaded_matchparen=1
 
-" Remaps
-
-" Leader key
-" let mapleader = ","
-
-" Reload config
-nnoremap <leader>so :so ~/.vimrc<CR>
-
-" Function keys
-set pastetoggle=<F3>

@@ -16,14 +16,16 @@
 (add-to-list 'package-archives
 	         '("melpa" . "https://melpa.org/packages/") t)
 
-;; keep the installed packages in .emacs.d
+;; Keep the installed packages in .emacs.d
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (when (< emacs-major-version 27)
   (package-initialize))
 
-;; update the package metadata
-(unless package-archive-contents
-  (package-refresh-contents))
+;; Update the package metadata
+;; NOTE: This significantly slows Emacs startup.
+;; If we use ensure for the installed packages, this is not needed.
+;; (unless package-archive-contents
+;;   (package-refresh-contents))
 
 ;; Username and Email
 (setq user-full-name "Mihai Gabriel Marin"
@@ -65,12 +67,12 @@
 (cond
  ((find-font (font-spec :name "Monaco"))
   (set-frame-font "Monaco 20"))
- ((find-font (font-spec :name "CodeNewRoman"))
-  (set-frame-font "CodeNewRoman 20"))
  ((find-font (font-spec :name "Google Sans Code"))
   (set-frame-font "Google Sans Code 20"))
- ((find-font (font-spec :name "AnonymousPro"))
-  (set-frame-font "AnonymousPro 20"))
+ ((find-font (font-spec :name "Inconsolata"))
+  (set-frame-font "Inconsolata 20"))
+ ((find-font (font-spec :name "CodeNewRoman"))
+  (set-frame-font "CodeNewRoman 20"))
  ((find-font (font-spec :name "NotoSansMono"))
   (set-frame-font "NotoSansMono 20"))
  ((find-font (font-spec :name "UbuntuMono"))
@@ -149,14 +151,6 @@
 (use-package protobuf-mode)
 (use-package wgrep)
 
-;; emualte terminals, both are ok
-;;(use-package vterm)
-;;(use-package eat)
-
-(use-package slime
-  :config
-  (setq inferior-lisp-program "sbcl"))
-
 (use-package company
   :config
   (global-company-mode))
@@ -178,6 +172,11 @@
 (use-package geiser
   :config
   (use-package geiser-guile))
+
+(use-package elfeed
+  :config
+  (setq elfeed-feeds '(("https://stallman.org/rss/rss.xml" GNU)))
+  )
 
 ;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
