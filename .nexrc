@@ -1,0 +1,8 @@
+" Copyright (C) 2026 Mihai-Gabriel Marin nvi/nex config file
+set ruler
+set noflash
+set showmode
+set autowrite
+set searchinc
+set ignorecase
+set autoindent
