@@ -11,8 +11,11 @@
 
 ;;; Code:
 
-(require 'package)
+(require 'server)
+(unless (or (server-running-p) (daemonp))
+  (server-start))
 
+(require 'package)
 (add-to-list 'package-archives
 	         '("melpa" . "https://melpa.org/packages/") t)
 
@@ -34,15 +37,11 @@
 ;; Always load newest byte code
 (setq load-prefer-newer t)
 
-;; quit Emacs directly even if there are running processes
-(setq confirm-kill-processes nil)
-
 ;; default modes
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
-(blink-cursor-mode 0)
-(show-paren-mode t)
+;;(show-paren-mode t)
 (pixel-scroll-precision-mode t)
 
 ;; default buffer completion
@@ -50,18 +49,23 @@
     (fido-vertical-mode)
   (fido-mode))
 
+;; Automatically generate etags
+(if (and (>= emacs-major-version 30)
+         (>= emacs-minor-version 1))
+    (etags-regen-mode t))
+
 ;; default vars
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore)
 
-;; mode line settings
+;; mode line settingspppp
 (line-number-mode t)
 (column-number-mode t)
 ;;(size-indication-mode t)
 
 ;; theme
-(if (>= emacs-major-version 28)
-    (load-theme 'modus-vivendi t))
+;; (if (>= emacs-major-version 28)
+;;     (load-theme 'modus-vivendi t))
 
 ;; fonts
 (cond
@@ -69,6 +73,8 @@
   (set-frame-font "Monaco 20"))
  ((find-font (font-spec :name "Google Sans Code"))
   (set-frame-font "Google Sans Code 20"))
+ ((find-font (font-spec :name "DejaVu Sans Mono"))
+  (set-frame-font "DejaVu Sans Mono 20"))
  ((find-font (font-spec :name "Inconsolata"))
   (set-frame-font "Inconsolata 20"))
  ((find-font (font-spec :name "CodeNewRoman"))
@@ -120,7 +126,12 @@
 ;; Use eww by default
 (setq browse-url-browser-function 'eww-browse-url)
 
-;; check OS type
+;; Use bash as default shell
+(setenv "SHELL" "/bin/bash")
+(setq shell-file-name "/bin/bash")
+(setq explicit-shell-file-name "/bin/bash")
+
+;; Set "Command" as Meta for Emacs GUI version in macOS
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
   (progn (message "Microsoft Windows")))
@@ -150,10 +161,7 @@
 (use-package yaml-mode)
 (use-package protobuf-mode)
 (use-package wgrep)
-
-(use-package company
-  :config
-  (global-company-mode))
+(use-package company)
 
 (use-package bash-completion
   :config

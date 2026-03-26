@@ -9,7 +9,7 @@
 PS1='[\u@\h \W]\$ '
 
 # vi mode
-set -o vi
+# set -o vi
 
 # History
 # don't put duplicate lines or lines starting with space in the history.
@@ -54,10 +54,10 @@ if ! shopt -oq posix; then
 fi
 
 # Defaults
-export EDITOR="vi"
-export TERMINAL="ghostty"
-export TERMINAL_PROG="ghostty"
-export BROWSER="firefox"
+export EDITOR="emacsclient"
+#export TERMINAL="ghostty"
+#export TERMINAL_PROG="ghostty"
+#export BROWSER="firefox"
 
 # Paths
 export PATH="$PATH:$HOME/.local/bin"
@@ -69,8 +69,5 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # Environment variables
 
-# Lynx
-export LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
-
 # Add fzf to bash
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
