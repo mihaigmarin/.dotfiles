@@ -46,18 +46,25 @@ alias diff='diff --color=auto'
 
 # Completion
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
+
+# Enable tab completion when starting a command with 'sudo'
+[ "$PS1" ] && complete -cf sudo
 
 # Defaults
 export EDITOR="emacsclient"
 #export TERMINAL="ghostty"
 #export TERMINAL_PROG="ghostty"
 #export BROWSER="firefox"
+
+# Environment variables
+export GOPATH=$HOME/go
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Paths
 export PATH="$PATH:$HOME/.local/bin"
@@ -66,8 +73,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
-
-# Environment variables
+export PATH="$GOPATH/bin:$PATH"
 
 # Add fzf to bash
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash

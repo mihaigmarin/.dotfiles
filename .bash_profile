@@ -4,22 +4,5 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-# Defaults
-export EDITOR="emacsclient"
-export TERMINAL="alacritty"
-export TERMINAL_PROG="alacritty"
-export BROWSER="firefox"
-
-# Variables 
-export XDG_CONFIG_HOME="$HOME/.config"
-export GOPATH=$HOME/go
-
-# Add to path
-export PATH="$GOPATH/bin:$PATH"
-
-# Tmux sessionzer
-# NOTE: not needed in emacs
-# bind -x '"\C-f": tmux-sessionizer'
-
 # Start graphical on user's current tty if not allready running.
 # [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx
