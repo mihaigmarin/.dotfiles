@@ -9,7 +9,7 @@
 PS1='[\u@\h \W]\$ '
 
 # vi mode
-# set -o vi
+set -o vi
 
 # History
 # don't put duplicate lines or lines starting with space in the history.
@@ -57,10 +57,9 @@ fi
 [ "$PS1" ] && complete -cf sudo
 
 # Defaults
-export EDITOR="emacsclient"
-#export TERMINAL="ghostty"
-#export TERMINAL_PROG="ghostty"
-#export BROWSER="firefox"
+export EDITOR='vi'
+export VISUAL='vi'
+export BROWSER='chrome'
 
 # Environment variables
 export GOPATH=$HOME/go

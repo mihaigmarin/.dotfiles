@@ -10,6 +10,8 @@ compinit -D
 
 # Defaults
 EDITOR='vi'
+VISUAL='vi'
+BROWSER='chrome'
 
 # Options
 force_color_prompt=yes
