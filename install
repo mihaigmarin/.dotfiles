@@ -17,3 +17,4 @@ ln -sfv $(pwd)/.local/scripts $HOME/.local/scripts
 ln -sfv $(pwd)/.tmux.conf $HOME/.tmux.conf
 ln -sfv $(pwd)/.config/ghostty/config $HOME/.config/ghostty/config
 ln -sfv $(pwd)/.config/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
+ln -sfv $(pwd)/.config/newsboat $HOME/.config/newsboat

@@ -1,0 +1,36 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+my $ext = shift @ARGV;
+my $cmt = "# ";
+
+if ($ext =~ /^(c|cpp|go)$/i) {
+    $cmt = "// ";
+} elsif ($ext =~ /^(sh|bash)$/i) {
+    $cmt = "# ";
+}
+
+while (<>) {
+    print "$cmt$_";
+}
+
+__END__
+
+=head1 NAME
+
+cmt - A simple script to comment out lines of text based on file extension.
+
+=head1 SYNOPSIS
+
+cmt <file-extension>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright (C) 2026 Mihai-Gabriel Marin
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=cut
+
