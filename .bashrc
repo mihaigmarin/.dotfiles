@@ -75,4 +75,4 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$GOPATH/bin:$PATH"
 
 # Add fzf to bash
-# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
