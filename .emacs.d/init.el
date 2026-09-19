@@ -74,14 +74,10 @@
   (set-frame-font "Monaco 20"))
  ((find-font (font-spec :name "Google Sans Code"))
   (set-frame-font "Google Sans Code 20"))
+ ((find-font (font-spec :name "Courier"))
+  (set-frame-font "Courier 20"))
  ((find-font (font-spec :name "DejaVu Sans Mono"))
   (set-frame-font "DejaVu Sans Mono 20"))
- ((find-font (font-spec :name "Inconsolata"))
-  (set-frame-font "Inconsolata 20"))
- ((find-font (font-spec :name "CodeNewRoman"))
-  (set-frame-font "CodeNewRoman 20"))
- ((find-font (font-spec :name "NotoSansMono"))
-  (set-frame-font "NotoSansMono 20"))
  ((find-font (font-spec :name "UbuntuMono"))
   (set-frame-font "UbuntuMono 20"))
  )
@@ -132,16 +128,10 @@
 (setq shell-file-name "/bin/bash")
 (setq explicit-shell-file-name "/bin/bash")
 
-;; Set "Command" as Meta for Emacs GUI version in macOS
-(cond
- ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (progn (message "Microsoft Windows")))
- ((string-equal system-type "darwin") ; Mac OS X
-  (progn (setq mac-right-command-modifier 'meta)
-         (setq mac-command-modifier 'meta)
-         (message "MacOS")))
- ((string-equal system-type "gnu/linux") ; linux
-  (progn (message "Linux"))))
+;; Set Command as Meta for Emacs GUI version in macOS
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (setq mac-right-command-modifier 'meta))
 
 ;; Install use package
 (unless (package-installed-p 'use-package)
@@ -178,10 +168,12 @@
   :config
   (use-package geiser-guile))
 
-(use-package elfeed
+(use-package elfeed)
+
+(use-package elfeed-org
   :config
-  (setq elfeed-feeds '(("https://stallman.org/rss/rss.xml" GNU Stallman)
-                       ("https://protesilaos.com/master.xml" GNU Emacs Protesilaos))))
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list (file-truename "feeds.org.gpg"))))
 
 (use-package pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode) ;; Only load when opening a PDF
