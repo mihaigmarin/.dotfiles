@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+# Containers Linux on Mac
+# $ colima start and $ colima stop
+brew install colima
+
+# Orchestator for deploying kubernetes clusters
+# $ minikube start $ minikube stop
+brew install minikube
+
+# Kubernets
+brew install kubernetes-cli
+
+# Kubernets package manager
+brew install helm
+
+# Terraform opensource variant (IaC tool)
+brew install opentofu
