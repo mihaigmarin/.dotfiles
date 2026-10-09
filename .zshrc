@@ -1,8 +1,10 @@
 # .zshrc
 # Mainly for MacOS
 
+#PROMPT='%n@%m %~ %# '
+
 # Set vim mode
-set -o vi
+# set -o vi
 
 # Completion
 autoload -U compinit
@@ -21,6 +23,9 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.dotnet/tools"
+
+# Manpaths
+export MANPATH="/opt/homebrew/share/man:$MANPATH"
 
 # GNU
 # GNU gsed in favor of BSD sed needs to be installed in order for emacs man command to work
@@ -64,3 +69,6 @@ export PERL5LIB=""
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# Set up minikube completion
+source <(minikube completion zsh)

@@ -76,3 +76,6 @@ export PATH="$GOPATH/bin:$PATH"
 
 # Add fzf to bash
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Set up minikube completion
+source <(minikube completion bash)
